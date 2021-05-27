@@ -25,7 +25,7 @@ const run = async () => {
 run().then(() => {
     console.log('Donzo');
     process.exit();
-    }, err => {
+}, err => {
     console.error('Something went wrong!');
     console.error(err);
     process.exit();
