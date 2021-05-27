@@ -10,15 +10,13 @@ const std = readline.createInterface({
 const ask = (text: string) => std.questionAsync(text);
 const run = async () => {
     const clientId = await ask('Client ID: ');
-    console.log(`Your provided 'Client ID': ${clientId}`)
     const clientSecret = await ask('Client SECRET: ');
-    console.log(`Your provided 'Client SECRET': ${clientSecret}`)
 
     const issuer = await Issuer.discover('https://login.intigriti.com');
     const client = new issuer.Client({ client_id: clientId, client_secret: clientSecret });
     const tokens = await client.grant({ grant_type: "client_credentials" });
 
-    const url = "https://api.intigriti.com/external/submission";
+    const url = "https://api.intigriti.com/external/v1.2/submissions";
     const options: OptionsOfTextResponseBody = { headers: { "Authorization": `Bearer ${tokens.access_token}` } };
     const resp = await got.get(url, options);
     console.log(JSON.stringify(JSON.parse(resp.body), null, 2));
@@ -27,7 +25,7 @@ const run = async () => {
 run().then(() => {
     console.log('Donzo');
     process.exit();
-}, err => {
+    }, err => {
     console.error('Something went wrong!');
     console.error(err);
     process.exit();

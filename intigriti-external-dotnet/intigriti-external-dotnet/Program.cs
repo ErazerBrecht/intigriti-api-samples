@@ -10,14 +10,13 @@ Console.Write("Client SECRET: ");
 var clientSecret = Console.ReadLine();
 var client = new HttpClient();
 var disco = await client.GetDiscoveryDocumentAsync("https://login.intigriti.com");
-Console.WriteLine($"Asking tokens for Client: '{clientId}' with secret '{clientSecret}'");
 var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
 {
     Address = disco.TokenEndpoint,
     ClientId = clientId,
     ClientSecret = clientSecret,
 });
-const string url = "https://api.intigriti.com/external/submission";
+const string url = "https://api.intigriti.com/external/v1.2/submissions";
 var apiRequest = new HttpRequestMessage
 {
     Method = HttpMethod.Get,
@@ -26,6 +25,7 @@ var apiRequest = new HttpRequestMessage
 };
 var apiResponse = await client.SendAsync(apiRequest);
 var apiResponseContent = await apiResponse.Content.ReadAsStringAsync();
+
 Console.WriteLine("");
 Console.WriteLine("API call succeeded!");
 Console.WriteLine("All your submissions:");
