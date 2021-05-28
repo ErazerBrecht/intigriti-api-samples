@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" 
+    directory: "/intigriti-external-nodejs" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/intigriti-external-dotnet" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/intigriti-external-python" # Location of package manifests
+    schedule:
+      interval: "weekly"
