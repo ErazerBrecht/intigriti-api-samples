@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "got": "^11.8.0",
-    "openid-client": "^4.7.3",
+    "openid-client": "^4.7.4",
     "readline-promise": "^1.0.5"
   },
   "devDependencies": {
