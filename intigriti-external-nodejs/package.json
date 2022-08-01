@@ -16,7 +16,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "got": "^11.8.0",
+    "got": "^12.3.0",
     "openid-client": "^4.7.3",
     "readline-promise": "^1.0.5"
   },
